@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+          <?php echo $this->session->userdata("nama_user");?>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
