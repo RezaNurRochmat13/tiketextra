@@ -112,4 +112,9 @@
         $this->session->set_flashdata("msg2", $msg2); 
 		redirect('Administrator/index');
 	}
+
+	public function get(){
+		$id_user= $this->input->post('id_user');
+		var_dump($id_user);
+	}
  }

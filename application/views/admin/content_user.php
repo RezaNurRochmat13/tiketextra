@@ -78,7 +78,7 @@
                   <td>
                     <?php echo anchor('Administrator/edit/'.$data->id_user,'<button type="button" class="btn btn-info"><i class="glyphicon glyphicon-pencil"></i></button>');?>
                     <?php echo anchor('Administrator/delete/'.$data->id_user,'<button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>');?>
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-zoom-in"></i></button>
+                    <button id="1" onClick="reply_click(this.id)" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-zoom-in"></i></button>
                   </td>
                 </tr>
                  <?php }}?>
@@ -98,10 +98,10 @@
   
 
           <!-- Modal -->
-          <div class="modal fade" id="myModal" role="dialog">
+          <!-- <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
             
-              <!-- Modal content-->
+             
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -113,7 +113,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
-              </div>
+              </div> -->
               
             </div>
           </div>
@@ -126,6 +126,41 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <!-- AJAX Processing -->
+  <script type="text/javascript">
+function reply_click(clicked_id)
+{
+    
+    // var click = clicked_id;
+    // alert(click);
+                var click = clicked_id;
+                //alert($(this).attr('id'));
+                $.ajax({
+                    type: "POST",
+                    url: '<?php echo site_url('Administrator/get')?>',
+                    data: { click : click },
+                    success: function(data)
+                    {
+                        alert(data);
+                    }
+                });
+    
+}
+</script>
+  <!-- <script type="text/javascript">
+      function load_click(id_user){
+$.ajax({  
+        type: "POST",
+        url: "<?php echo site_url('Administrator/get')?>",
+        data: "id_user : id_user", //last_id kita berarti 15
+        dataType: "html",  //sesuai keinginan, di sini saya pengen ngambil langsung data dalam bentuk html langsung dari file data_per_load.php
+        success: function(data){
+            alert(data);
+        }
+      });
+}
+  </script> -->
 
   
 
